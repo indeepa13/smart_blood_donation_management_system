@@ -5,24 +5,25 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.catalina.User;
 
 import java.time.LocalDate;
+
 @Entity
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DonerEntity {
+public class AlertEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String message;
+    private LocalDate createdAt;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "id")
-    private User user;
+    @ManyToOne
+    private DonerEntity donor;
 
-    private String bloodGroup;
-    private String city;
-    private LocalDate lastDonationDate;
+    @ManyToOne
+    private BloodRequestEntity bloodRequest;
+
 }

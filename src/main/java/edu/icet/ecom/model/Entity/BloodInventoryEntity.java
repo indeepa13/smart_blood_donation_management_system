@@ -6,25 +6,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class BloodRequestEntity {
+public class BloodInventoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String bloodGroup;
-    private String status;
-    private LocalDate requestDate;
+    private int quantity;
 
     @ManyToOne
-    @JoinColumn(name = "hospital_id")
     private HospitalEntity hospital;
-}
 
+}
